@@ -15,12 +15,11 @@ function Register() {
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const result = await axios.post("/api/auth/register", {
+            await axios.post("/api/auth/register", {
                 name,
                 email,
                 password,
             });
-            // console.log(result);
             router.push("/login");
         } catch (error) {
             console.log(error);
@@ -87,7 +86,7 @@ function Register() {
                     </button>
                 </form>
 
-                <div className="flex items-center gap-[5px] justify-center my-[15px]">
+                <div className="flex items-center gap-1.25 justify-center my-3.75">
                     <hr className="grow border-gray-50" />
                     <span>OR</span>
                     <hr className="grow border-gray-50" />

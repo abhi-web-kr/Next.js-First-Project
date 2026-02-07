@@ -8,21 +8,15 @@ import { useRouter } from "next/navigation";
 import { userDataContext } from "../context/UserContext";
 
 function Page() {
-    // const { data } = useSession();
-    // console.log(data?.user);
-    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const data = useContext(userDataContext);
     console.log(data);
 
     const handleSignOut = async () => {
-        setLoading(true);
         try {
             await signOut();
-            setLoading(false);
         } catch (error) {
-            setLoading(false);
             console.log(error);
         }
     };
@@ -34,12 +28,12 @@ function Page() {
                     <BsPencil
                         size={22}
                         color="white"
-                        className="absolute right-[20px] top-[20px] cursor-pointer"
+                        className="absolute right-5 top-5 cursor-pointer"
                         onClick={() => router.push("/edit")}
                     />
 
                     {data.user?.image && (
-                        <div className="relative w-[200px] h-[200px] border-2 border-white rounded-full overflow-hidden">
+                        <div className="relative w-50 h-50 border-2 border-white rounded-full overflow-hidden">
                             <Image src={data.user.image} fill alt="userImage" />
                         </div>
                     )}

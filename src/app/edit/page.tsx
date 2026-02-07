@@ -2,14 +2,12 @@
 
 import { userDataContext } from "@/context/UserContext";
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 
 function Page() {
-    // const { data } = useSession();
     const [name, setName] = useState("");
     const [frontendImage, setFrontendImage] = useState("");
     const [backendImage, setBackendImage] = useState<File>();
@@ -18,7 +16,6 @@ function Page() {
     const [loading, setLoading] = useState(false);
     const data = useContext(userDataContext);
 
-    // console.log(data);
 
     const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
@@ -56,7 +53,7 @@ function Page() {
             setName(data?.user?.name || "");
             setFrontendImage(data?.user?.image as string);
         }
-    }, [data]);
+    }, [data?.user?.name, data?.user?.image]);
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-4">

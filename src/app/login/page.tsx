@@ -14,8 +14,7 @@ function Login() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const result = await signIn("credentials", { email, password, redirect: false });
-            // console.log(result)
+            await signIn("credentials", { email, password, redirect: false });
             router.push("/");
         } catch (error) {
             console.log(error);
@@ -70,7 +69,7 @@ function Login() {
                     </button>
                 </form>
 
-                <div className="flex items-center gap-[5px] justify-center my-[15px]">
+                <div className="flex items-center gap-1.25 justify-center my-3.75">
                     <hr className="grow border-gray-50" />
                     <span>OR</span>
                     <hr className="grow border-gray-50" />
