@@ -1,7 +1,7 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
-import { useContext, useState } from "react";
+import { signOut } from "next-auth/react";
+import { useContext } from "react";
 import Image from "next/image";
 import { BsPencil } from "react-icons/bs";
 import { useRouter } from "next/navigation";

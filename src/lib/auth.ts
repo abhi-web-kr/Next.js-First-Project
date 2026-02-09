@@ -46,20 +46,19 @@ const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         async signIn({ account, user }) {
-            if(account?.provider == "google") {
+            if (account?.provider == "google") {
                 await connectDB();
-                let existUser = await User.findOne({email: user.email});
-                if(!existUser) {
+                let existUser = await User.findOne({ email: user.email });
+                if (!existUser) {
                     existUser = await User.create({
                         name: user?.name,
-                        email: user?.email
-                    })
+                        email: user?.email,
+                    });
                 }
-                user.id = existUser._id as string
+                user.id = existUser._id as string;
             }
             return true;
         },
-
 
         async jwt({ token, user }) {
             if (user) {

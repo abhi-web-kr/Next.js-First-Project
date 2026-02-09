@@ -23,9 +23,7 @@ type userType = {
     image?: string;
 };
 
-export const userDataContext = createContext<userContextType | undefined>(
-    undefined,
-);
+export const userDataContext = createContext<userContextType | undefined>(undefined,);
 
 function UserContext({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<userType | null>();
